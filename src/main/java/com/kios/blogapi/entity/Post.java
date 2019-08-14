@@ -49,22 +49,13 @@ public class Post {
 	private String body;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
-	
-	@ElementCollection
-	private List<Comment> comments;
-	
+
 	@PrePersist
 	public void prePersist() {
 		createdAt = LocalDateTime.now();
 		updatedAt = LocalDateTime.now();
 	}
 	
-	public List<Comment> getComments() {
-		return comments;
-	}
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
 	@PreUpdate
 	public void preUpdate() {
 		updatedAt = LocalDateTime.now();
