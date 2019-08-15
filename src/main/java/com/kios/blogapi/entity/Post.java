@@ -17,7 +17,18 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	private String title;
+	private String body;
+	private String description;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -45,10 +56,7 @@ public class Post {
 	public Long getId() {
 		return id;
 	}
-	private String title;
-	private String body;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
+
 
 	@PrePersist
 	public void prePersist() {

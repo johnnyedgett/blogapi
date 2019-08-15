@@ -42,9 +42,5 @@ public class PostController {
 	public void test() {
 		
 	}
-	
-//	@Async("threadPoolTaskExecutor")
-//	public CompletableFuture<String> testtest() throws InterruptedException {
-//		String url = String.format("https://api.github.com/users/%s", "johnnyedgett");	
-//	}
+
 }
