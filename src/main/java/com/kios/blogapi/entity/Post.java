@@ -1,9 +1,8 @@
 package com.kios.blogapi.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +17,7 @@ public class Post {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String title;
+	@Column(columnDefinition="TEXT")
 	private String body;
 	private String description;
 	private LocalDateTime createdAt;

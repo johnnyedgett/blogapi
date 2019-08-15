@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,15 +33,19 @@ public class PostController {
 		}
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<Post> getSinglePost(@PathVariable Long id){
+		Post p = postRepository.findById(id).get();
+		if(p!=null) {
+			return new ResponseEntity<>(p, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	@GetMapping("/page")
 	public ResponseEntity<Page<Post>> getPage(Pageable pageable, Sort sort){
 		Page<Post> posts = postRepository.findAll(pageable);
 		return new ResponseEntity<>(posts, HttpStatus.OK);
 	}
-	
-	@GetMapping("/dev")
-	public void test() {
-		
-	}
-
 }
